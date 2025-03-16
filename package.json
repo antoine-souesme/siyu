@@ -10,7 +10,7 @@
         "test.e2e": "cypress run",
         "test.unit": "vitest",
         "lint": "eslint",
-        "schemas": "npx openapi-typescript http://localhost:3000/api-json -o src/libs/api/schemas.ts"
+        "schemas": "npx openapi-typescript http://localhost:3000/api-json -o src/libs/api/schemas.ts --export-type --enum --dedupe-enums"
     },
     "dependencies": {
         "@capacitor/app": "7.0.0",
