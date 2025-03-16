@@ -28,10 +28,7 @@ import '@ionic/react/css/core.css';
 
 /* import '@ionic/react/css/palettes/dark.always.css'; */
 /* import '@ionic/react/css/palettes/dark.class.css'; */
-import '@ionic/react/css/palettes/dark.system.css';
-
-/* Theme variables */
-import './theme/variables.css';
+// import '@ionic/react/css/palettes/dark.system.css';
 
 setupIonicReact({
     mode: 'ios',
