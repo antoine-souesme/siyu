@@ -38,7 +38,7 @@ export const AuthPage = () => {
 
     return (
         <IonPage>
-            <IonContent>
+            <IonContent scrollY={ false }>
                 <div
                     style={ {
                         backgroundImage: 'url(/images/siyu-auth-background-a.jpg)',

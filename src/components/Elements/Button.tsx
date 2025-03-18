@@ -2,8 +2,8 @@ import clsx from 'clsx';
 import React, { ForwardedRef, forwardRef } from 'react';
 
 const colors = {
-    white: 'bg-white text-accent border-white',
-    accent: 'bg-accent text-white border-accent',
+    white: 'bg-white text-accent border-white active:bg-softer-grey active:border-softer-grey',
+    accent: 'bg-accent text-white border-accent active:bg-accent-dark active:border-accent-dark',
 };
 
 const variants = {
@@ -49,7 +49,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
             className={ clsx(
                 'transition-colors duration-150 cursor-pointer',
                 'flex items-center rounded-full border gap-6',
-                'font-medium uppercase',
+                'font-medium uppercase select-none',
                 colors[color],
                 variants[variant],
                 sizes[size],
