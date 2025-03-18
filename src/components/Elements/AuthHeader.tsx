@@ -1,20 +1,21 @@
-import { IonContent, IonPage } from '@ionic/react';
+import { IonToolbar } from '@ionic/react';
 import { Button } from '@src/components/Elements/Button';
 import { Icon } from '@src/components/Elements/Icon';
 import clsx from 'clsx';
-import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router';
 
-export const AuthPage = () => {
+export const AuthHeader = () => {
 
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Libs                                                                                           <
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
 
     // I18n
-    // const { t } = useTranslation();
+    const { t } = useTranslation();
 
-    // Router
-    const { push } = useHistory();
+    // History
+    const history = useHistory();
 
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Contexts                                                                                       <
@@ -37,48 +38,32 @@ export const AuthPage = () => {
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
 
     return (
-        <IonPage>
-            {/* <IonHeader>
-                <IonToolbar ></IonToolbar>
-            </IonHeader> */}
-            <IonContent
-                slot='fixed'
-                scrollY={ false }
-                style={ { overflow: 'hidden' } }
+        <IonToolbar
+            color='translucent'
+            slot='fixed'
+            className={ clsx([
+                'bg-white px-16',
+            ]) }
+        >
+            <div
+                style={ {
+                    paddingTop: 'var(--ion-safe-area-top)',
+                } }
             >
-                <div
-                    style={ {
-                        backgroundImage: 'url(/images/siyu-auth-background-a.jpg)',
-                    } }
-                    className={ clsx([
-                        'absolute inset-0 bg-cover bg-center',
-                        'flex flex-col items-center justify-center gap-64',
-                    ]) }
+                <Button
+                    color='white'
+                    size='small'
+                    onClick={ () => history.goBack() }
                 >
                     <Icon
-                        i='Logo'
-                        width={ 100 }
-                        height={ 100 }
-                        color='accent'
+                        i='ArrowLeft'
+                        width={ 20 }
+                        height={ 20 }
                     />
+                    <span>{t('button.back')}</span>
+                </Button>
+            </div>
+        </IonToolbar>
 
-                    <div className='flex flex-col items-center gap-8 w-full px-64'>
-                        <Button
-                            onClick={ () => push('/register') }
-                            className='w-full justify-center'
-                        >
-                            <span>Créer un compte</span>
-                        </Button>
-                        <Button
-                            color='white'
-                            onClick={ () => push('/login') }
-                            className='w-full justify-center'
-                        >
-                            <span>Connexion</span>
-                        </Button>
-                    </div>
-                </div>
-            </IonContent>
-        </IonPage>
     );
 };

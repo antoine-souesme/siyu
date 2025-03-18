@@ -1,20 +1,52 @@
-import { IonContent, IonPage } from '@ionic/react';
-import { Button } from '@src/components/Elements/Button';
-import { Icon } from '@src/components/Elements/Icon';
 import clsx from 'clsx';
-import { useHistory } from 'react-router-dom';
+import { Control, FieldError, UseFormRegisterReturn } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
-export const AuthPage = () => {
+type FieldWrapperProps = {
+    label?: string;
+    helpText?: string;
+    placeholder?: string;
+    error?: FieldError | string | undefined;
+    children: React.ReactNode;
+    className?: string;
+}
+
+export type FieldSharedProps = {
+    // Form specific props
+    registration: Partial<UseFormRegisterReturn>;
+    control: Control<any>;
+    error?: FieldError | string | undefined;
+
+    // Text props
+    label?: string;
+    helpText?: string;
+    placeholder?: string;
+
+    // State props
+    readonly?: boolean;
+    disabled?: boolean;
+
+    // Callbacks props
+    onClearValue?: () => void;
+
+    // Style props
+    className?: string;
+}
+
+export const FieldWrapper = ({
+    error,
+    label,
+    helpText,
+    children,
+    className,
+}: FieldWrapperProps) => {
 
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Libs                                                                                           <
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
 
     // I18n
-    // const { t } = useTranslation();
-
-    // Router
-    const { push } = useHistory();
+    const { t } = useTranslation();
 
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Contexts                                                                                       <
@@ -37,48 +69,47 @@ export const AuthPage = () => {
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
 
     return (
-        <IonPage>
-            {/* <IonHeader>
-                <IonToolbar ></IonToolbar>
-            </IonHeader> */}
-            <IonContent
-                slot='fixed'
-                scrollY={ false }
-                style={ { overflow: 'hidden' } }
-            >
-                <div
-                    style={ {
-                        backgroundImage: 'url(/images/siyu-auth-background-a.jpg)',
-                    } }
-                    className={ clsx([
-                        'absolute inset-0 bg-cover bg-center',
-                        'flex flex-col items-center justify-center gap-64',
-                    ]) }
-                >
-                    <Icon
-                        i='Logo'
-                        width={ 100 }
-                        height={ 100 }
-                        color='accent'
-                    />
-
-                    <div className='flex flex-col items-center gap-8 w-full px-64'>
-                        <Button
-                            onClick={ () => push('/register') }
-                            className='w-full justify-center'
-                        >
-                            <span>Créer un compte</span>
-                        </Button>
-                        <Button
-                            color='white'
-                            onClick={ () => push('/login') }
-                            className='w-full justify-center'
-                        >
-                            <span>Connexion</span>
-                        </Button>
-                    </div>
+        <div
+            className={ clsx([
+                '',
+                className,
+            ]) }
+        >
+            {label &&
+                <div className='flex items-center mb-8 min-h-[18px]'>
+                    <p
+                        className={ clsx([
+                            'text-text-normal text-medium font-light gap-4 flex items-center',
+                        ]) }
+                    >
+                        {label}
+                    </p>
                 </div>
-            </IonContent>
-        </IonPage>
+            }
+
+            {helpText &&
+                <p className='text-dark-grey text-small font-medium mb-8'>
+                    {helpText}
+                </p>
+            }
+
+            <div className='flex flex-col gap-8'>
+                {children}
+            </div>
+
+            {(error as FieldError) &&
+                <div className={ clsx('mt-8 text-red-600 font-medium') }>
+                    {((error as any)?.message === null) &&
+                        <p>{t('field-wrapper.default-error')}</p>
+                    }
+
+                    {((error as any).message !== null) &&
+                        <p>
+                            {t((error as FieldError).message!)}
+                        </p>
+                    }
+                </div>
+            }
+        </div>
     );
 };

@@ -1,20 +1,39 @@
-import { IonContent, IonPage } from '@ionic/react';
-import { Button } from '@src/components/Elements/Button';
-import { Icon } from '@src/components/Elements/Icon';
+import { FieldSharedProps, FieldWrapper } from '@src/components/Form/FieldWrapper';
 import clsx from 'clsx';
-import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-export const AuthPage = () => {
+type StringFieldProps = {
+    autoCapitalize?: string;
+    autoFocus?: boolean;
+    autoComplete?: string;
+    centered?: boolean;
+    className?: string;
+} & FieldSharedProps;
+
+export const StringField = ({
+    // Specific
+    autoCapitalize = 'off',
+    autoFocus = false,
+    autoComplete = 'off',
+    centered = false,
+
+    // Shared
+    registration,
+    error,
+    label,
+    placeholder,
+    helpText,
+    readonly = false,
+    disabled = false,
+    className,
+}: StringFieldProps) => {
 
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Libs                                                                                           <
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
 
     // I18n
-    // const { t } = useTranslation();
-
-    // Router
-    const { push } = useHistory();
+    const { t } = useTranslation();
 
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Contexts                                                                                       <
@@ -37,48 +56,39 @@ export const AuthPage = () => {
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
 
     return (
-        <IonPage>
-            {/* <IonHeader>
-                <IonToolbar ></IonToolbar>
-            </IonHeader> */}
-            <IonContent
-                slot='fixed'
-                scrollY={ false }
-                style={ { overflow: 'hidden' } }
+        <FieldWrapper
+            label={ label }
+            helpText={ helpText }
+            error={ error }
+            className={ className }
+        >
+            <div
+                className={ clsx([
+                    'flex',
+                    'w-full h-50 rounded-medium',
+                    'bg-softer-grey border border-softer-grey [&:hover:not(:disabled,:read-only)]:border-accent [&:focus:not(:disabled,:read-only)]:border-accent',
+                    'outline-hidden ease-in-out duration-150',
+                    !disabled && !readonly && 'hover:border-accent focus-within:border-accent',
+                    (disabled || readonly) && 'bg-soft-grey border-soft-grey text-grey placeholder:text-grey! cursor-not-allowed',
+                ]) }
             >
-                <div
-                    style={ {
-                        backgroundImage: 'url(/images/siyu-auth-background-a.jpg)',
-                    } }
+                <input
+                    type='text'
+                    placeholder={ placeholder }
+                    readOnly={ readonly }
+                    disabled={ disabled }
+                    autoCapitalize={ autoCapitalize }
+                    autoFocus={ autoFocus }
+                    autoComplete={ autoComplete }
                     className={ clsx([
-                        'absolute inset-0 bg-cover bg-center',
-                        'flex flex-col items-center justify-center gap-64',
+                        'w-full px-16 py-4 rounded-medium',
+                        'outline-hidden font-light placeholder:text-soft-grey',
+                        (disabled || readonly) && 'bg-soft-grey border-soft-grey text-grey placeholder:text-grey! cursor-not-allowed',
+                        centered && 'text-center',
                     ]) }
-                >
-                    <Icon
-                        i='Logo'
-                        width={ 100 }
-                        height={ 100 }
-                        color='accent'
-                    />
-
-                    <div className='flex flex-col items-center gap-8 w-full px-64'>
-                        <Button
-                            onClick={ () => push('/register') }
-                            className='w-full justify-center'
-                        >
-                            <span>Créer un compte</span>
-                        </Button>
-                        <Button
-                            color='white'
-                            onClick={ () => push('/login') }
-                            className='w-full justify-center'
-                        >
-                            <span>Connexion</span>
-                        </Button>
-                    </div>
-                </div>
-            </IonContent>
-        </IonPage>
+                    { ...registration }
+                />
+            </div>
+        </FieldWrapper>
     );
 };
