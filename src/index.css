@@ -1,3 +1,7 @@
+
+@import url('./assets/styles/fonts.css');
+@import url('./assets/styles/global.css');
+
 @import "tailwindcss";
 
 @theme {
@@ -42,4 +46,14 @@
     --text-large: 18px;
     --text-xl: 22px;
     --text-xxl: 64px;
+
+    --font-fredoka: Fredoka, sans-serif;
+
+    --color-accent: #FF5252;
+    --color-accent-dark: #D23F3F;
+
+    --color-grey: #555555;
+    --color-softer-grey: #F8F8F8;
+    --color-soft-grey: #999999;
+    --color-dark-grey: #111111;
 }

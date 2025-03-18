@@ -6,7 +6,14 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-    { ignores: ['dist', 'cypress.config.ts'] },
+    {
+        ignores: [
+            'dist',
+            'cypress.config.ts',
+            'ios',
+            'android',
+        ]
+    },
     {
         extends: [js.configs.recommended, ...tseslint.configs.recommended],
         files: ['**/*.{ts,tsx}'],
@@ -25,6 +32,10 @@ export default tseslint.config(
                 'warn',
                 { allowConstantExport: true },
             ],
+            'react-hooks/exhaustive-deps': 'off',
+
+            '@typescript-eslint/no-explicit-any': 'off',
+
             'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
             'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
 
