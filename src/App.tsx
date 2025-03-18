@@ -4,6 +4,7 @@ import { MainRoutes } from './routes/MainRoutes';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
+import { ReactQueryProvider } from '@src/libs/react-query/ReactQueryProvider';
 
 /* Basic CSS for apps built with Ionic */
 // import '@ionic/react/css/normalize.css';
@@ -32,11 +33,13 @@ import '@ionic/react/css/core.css';
 setupIonicReact({mode: 'ios'});
 
 const App: React.FC = () => (
-    <IonApp>
-        <IonReactRouter>
-            <MainRoutes />
-        </IonReactRouter>
-    </IonApp>
+    <ReactQueryProvider>
+        <IonApp>
+            <IonReactRouter>
+                <MainRoutes />
+            </IonReactRouter>
+        </IonApp>
+    </ReactQueryProvider>
 );
 
 export default App;

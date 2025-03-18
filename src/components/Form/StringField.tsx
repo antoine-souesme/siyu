@@ -1,6 +1,5 @@
 import { FieldSharedProps, FieldWrapper } from '@src/components/Form/FieldWrapper';
 import clsx from 'clsx';
-import { useTranslation } from 'react-i18next';
 
 type StringFieldProps = {
     autoCapitalize?: string;
@@ -31,9 +30,6 @@ export const StringField = ({
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Libs                                                                                           <
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
-
-    // I18n
-    const { t } = useTranslation();
 
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Contexts                                                                                       <
