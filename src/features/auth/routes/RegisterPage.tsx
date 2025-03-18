@@ -140,6 +140,8 @@ export const RegisterPage = () => {
                         <Button
                             type='submit'
                             className='w-full justify-center'
+                            loading={ mutation.isPending }
+                            disabled={ mutation.isPending }
                         >
                             <span>{t('button.validate')}</span>
                         </Button>

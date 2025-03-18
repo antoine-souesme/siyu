@@ -1,3 +1,4 @@
+import { Spinner } from '@src/components/Elements/Spinner';
 import clsx from 'clsx';
 import React, { ForwardedRef, forwardRef } from 'react';
 
@@ -59,19 +60,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
             ) }
             { ...props }
         >
-            {props.children}
+            {!loading && props.children}
 
             {(!loading && icon) && icon }
 
-            {/* TODO: Implement loading */}
-            {/* {loading &&
-                <Spinner
-                    className={ clsx([
-                        (size === 'normal' || size === 'small') && 'ml-8',
-                    ]) }
-                    width={ (size === 'small' || size === 'square-small') ? 14 : 20 }
-                />
-            } */}
+            {loading &&
+                <Spinner color='white' />
+            }
         </button>
     );
 });
