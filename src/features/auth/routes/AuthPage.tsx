@@ -1,4 +1,5 @@
-import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonPage } from '@ionic/react';
+import clsx from 'clsx';
 import { useHistory } from 'react-router-dom';
 
 export const AuthPage = () => {
@@ -35,21 +36,10 @@ export const AuthPage = () => {
 
     return (
         <IonPage>
-            <IonHeader>
-                <IonToolbar>
-                    <IonTitle>Auth</IonTitle>
-                </IonToolbar>
-            </IonHeader>
-
-            <IonContent>
-                <IonButton
-                    onClick={ (event) => {
-                        event.preventDefault();
-                        push('/login');
-                    } }
-                >
-                    Login
-                </IonButton>
+            <IonContent slot='fixed'>
+                <div className={ clsx("bg-yellow-400 absolute inset-0") }>
+                    <h1>Auth Page</h1>
+                </div>
             </IonContent>
         </IonPage>
     );

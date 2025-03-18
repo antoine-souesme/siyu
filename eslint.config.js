@@ -25,6 +25,10 @@ export default tseslint.config(
                 'warn',
                 { allowConstantExport: true },
             ],
+            'react-hooks/exhaustive-deps': 'off',
+
+            '@typescript-eslint/no-explicit-any': 'off',
+
             'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
             'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
 

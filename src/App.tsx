@@ -6,9 +6,9 @@ import { MainRoutes } from './routes/MainRoutes';
 import '@ionic/react/css/core.css';
 
 /* Basic CSS for apps built with Ionic */
-// import '@ionic/react/css/normalize.css';
-// import '@ionic/react/css/structure.css';
-// import '@ionic/react/css/typography.css';
+import '@ionic/react/css/normalize.css';
+import '@ionic/react/css/structure.css';
+import '@ionic/react/css/typography.css';
 
 /* Optional CSS utils that can be commented out */
 // import '@ionic/react/css/padding.css';
@@ -29,9 +29,7 @@ import '@ionic/react/css/core.css';
 /* import '@ionic/react/css/palettes/dark.class.css'; */
 // import '@ionic/react/css/palettes/dark.system.css';
 
-setupIonicReact({
-    mode: 'ios',
-});
+setupIonicReact();
 
 const App: React.FC = () => (
     <IonApp>
