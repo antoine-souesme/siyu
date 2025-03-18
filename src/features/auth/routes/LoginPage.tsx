@@ -40,13 +40,10 @@ export const LoginPage = () => {
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Login</IonTitle>
+                    <IonTitle></IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                Login page
-
-
             </IonContent>
         </IonPage>
     );

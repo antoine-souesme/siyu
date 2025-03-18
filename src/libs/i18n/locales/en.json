@@ -1,4 +1,12 @@
 {
-
-    "workflow-page.version": "Version"
+    "auth-page.login": "Login",
+    "auth-page.register": "Create an account",
+    "button.back": "Back",
+    "button.validate": "Validate",
+    "field-wrapper.default-error": "The field is invalid",
+    "register-page.form.confirmPassword": "Confirm Password",
+    "register-page.form.displayName": "Display Name",
+    "register-page.form.email": "Email Address",
+    "register-page.form.password": "Password",
+    "register-page.title": "Create an Account"
 }
