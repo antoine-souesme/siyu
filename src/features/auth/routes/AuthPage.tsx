@@ -2,6 +2,7 @@ import { IonContent, IonPage } from '@ionic/react';
 import { Button } from '@src/components/Elements/Button';
 import { Icon } from '@src/components/Elements/Icon';
 import clsx from 'clsx';
+import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 
 export const AuthPage = () => {
@@ -11,7 +12,7 @@ export const AuthPage = () => {
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
 
     // I18n
-    // const { t } = useTranslation();
+    const { t } = useTranslation();
 
     // Router
     const { push } = useHistory();
@@ -38,9 +39,6 @@ export const AuthPage = () => {
 
     return (
         <IonPage>
-            {/* <IonHeader>
-                <IonToolbar ></IonToolbar>
-            </IonHeader> */}
             <IonContent
                 slot='fixed'
                 scrollY={ false }
@@ -67,14 +65,14 @@ export const AuthPage = () => {
                             onClick={ () => push('/register') }
                             className='w-full justify-center'
                         >
-                            <span>Créer un compte</span>
+                            <span>{t('auth-page.register')}</span>
                         </Button>
                         <Button
                             color='white'
                             onClick={ () => push('/login') }
                             className='w-full justify-center'
                         >
-                            <span>Connexion</span>
+                            <span>{t('auth-page.login')}</span>
                         </Button>
                     </div>
                 </div>
