@@ -38,7 +38,7 @@ export const AuthPage = () => {
 
     return (
         <IonPage>
-            <IonContent slot='fixed'>
+            <IonContent>
                 <div
                     style={ {
                         backgroundImage: 'url(/images/siyu-auth-background-a.jpg)',
@@ -54,7 +54,6 @@ export const AuthPage = () => {
                         height={ 100 }
                     />
 
-
                     <div className='flex flex-col items-center gap-8 w-full px-64'>
                         <Button
                             onClick={ () => console.log('test') }
@@ -63,6 +62,7 @@ export const AuthPage = () => {
                             <span>Créer un compte</span>
                         </Button>
                         <Button
+                            color='white'
                             onClick={ () => console.log('test') }
                             className='w-full justify-center'
                         >

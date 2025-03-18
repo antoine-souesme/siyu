@@ -48,7 +48,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
             tabIndex={ -1 }
             className={ clsx(
                 'transition-colors duration-150 cursor-pointer',
-                'flex items-center rounded-full font-medium border gap-6',
+                'flex items-center rounded-full border gap-6',
+                'font-medium uppercase',
                 colors[color],
                 variants[variant],
                 sizes[size],
