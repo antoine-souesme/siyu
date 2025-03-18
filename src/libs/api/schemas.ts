@@ -62,6 +62,9 @@ export type components = {
             password: string;
             confirmPassword: string;
         };
+        RegisterResponse: {
+            accessToken: string;
+        };
         LoginDto: {
             email: string;
             password: string;
@@ -108,11 +111,13 @@ export interface operations {
             };
         };
         responses: {
-            201: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
-                content?: never;
+                content: {
+                    "application/json": components["schemas"]["RegisterResponse"];
+                };
             };
         };
     };
@@ -129,7 +134,7 @@ export interface operations {
             };
         };
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };

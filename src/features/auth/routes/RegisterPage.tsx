@@ -3,6 +3,7 @@ import { AuthHeader } from '@src/components/Elements/AuthHeader';
 import { Button } from '@src/components/Elements/Button';
 import { Icon } from '@src/components/Elements/Icon';
 import { StringField } from '@src/components/Form/StringField';
+import { LocalStorageKeys } from '@src/constants/local-storage-keys';
 import { useMutationRegister } from '@src/features/auth/api/useMutationRegister';
 import { handleErrorMessage } from '@src/libs/api/api';
 import { components } from '@src/libs/api/schemas';
@@ -66,7 +67,12 @@ export const RegisterPage = () => {
             } as components['schemas']['RegisterDto'];
 
             // Perform request
-            await mutation.mutateAsync({ body });
+            const response = await mutation.mutateAsync({ body });
+
+            if (response?.data) {
+                localStorage.setItem(LocalStorageKeys.AccessToken, response.data.accessToken);
+                window.location.reload();
+            }
         } catch (error) {
             handleErrorMessage(error);
         }

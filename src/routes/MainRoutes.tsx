@@ -8,9 +8,6 @@ export const MainRoutes = () => {
     //> Libs                                                                                           <
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
 
-    // I18n
-    // const { t } = useTranslation();
-
     // Authorization
     const { authorized } = useAuthentication();
 
