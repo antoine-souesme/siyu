@@ -1,17 +1,10 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import { RouteComponentProps } from 'react-router';
 
-type LoginPageProps = {
-    className?: string;
-} & RouteComponentProps;
+// type FormInput = {
+//     email: string;
+// }
 
-type FormInput = {
-    email: string;
-}
-
-export const LoginPage = ({
-    className,
-}: LoginPageProps) => {
+export const LoginPage = () => {
 
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Libs                                                                                           <
@@ -42,24 +35,6 @@ export const LoginPage = ({
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Callbacks                                                                                      <
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
-
-    // const onSubmit: SubmitHandler<FormInput> = async (data) => {
-    //     try {
-
-    //         const response = await mutateAsyncSendLink({
-    //             email: data.email,
-    //             context: {
-    //                 scheme: true,
-    //                 callback: 'bodih://',
-    //             },
-    //         });
-
-    //         console.log(response);
-
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // };
 
     return (
         <IonPage>

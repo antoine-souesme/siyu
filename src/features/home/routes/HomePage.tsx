@@ -1,9 +1,4 @@
 import { IonContent, IonPage } from '@ionic/react';
-import { RouteComponentProps } from 'react-router';
-
-type HomePageProps = {
-    className?: string;
-} & RouteComponentProps;
 
 export const HomePage = () => {
 
