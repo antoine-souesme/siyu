@@ -3,6 +3,9 @@ import { AuthHeader } from '@src/components/Elements/AuthHeader';
 import { Button } from '@src/components/Elements/Button';
 import { Icon } from '@src/components/Elements/Icon';
 import { StringField } from '@src/components/Form/StringField';
+import { useMutationRegister } from '@src/features/auth/api/useMutationRegister';
+import { handleErrorMessage } from '@src/libs/api/api';
+import { components } from '@src/libs/api/schemas';
 import clsx from 'clsx';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -42,6 +45,8 @@ export const RegisterPage = () => {
     //> Queries                                                                                        <
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
 
+    const mutation = useMutationRegister({});
+
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Getters                                                                                        <
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
@@ -52,10 +57,18 @@ export const RegisterPage = () => {
 
     const onSubmit: SubmitHandler<FormInput> = async (data) => {
         try {
-            console.log(data);
+            // Build body
+            const body = {
+                email: data.email,
+                displayName: data.displayName,
+                password: data.password,
+                confirmPassword: data.confirmPassword,
+            } as components['schemas']['RegisterDto'];
+
+            // Perform request
+            await mutation.mutateAsync({ body });
         } catch (error) {
-            console.log('==> error:', error);
-            //
+            handleErrorMessage(error);
         }
     };
 
