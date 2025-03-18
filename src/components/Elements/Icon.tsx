@@ -44,7 +44,7 @@ export const Icon = ({
         return (
             <ReactSVG
                 className={ clsx('root-component-Icon', `text-${color}`, props.className) }
-                src={ external ? i : `/icons/${type}/${i}.svg` }
+                src={ external ? i : `/icons/${i}.svg` }
                 beforeInjection={ beforeInjection }
             />
         );
