@@ -53,12 +53,23 @@ export const AuthPage = () => {
                         'flex flex-col items-center justify-center gap-64',
                     ]) }
                 >
-                    <Icon
-                        i='Logo'
-                        width={ 100 }
-                        height={ 100 }
-                        color='accent'
-                    />
+
+                    <div className=" flex flex-col items-center">
+
+                        <Icon
+                            i='Logo'
+                            width={ 100 }
+                            height={ 100 }
+                            color='accent'
+                        />
+
+                        <Icon
+                            i='LogoTextOnly'
+                            width={ 100 }
+                            height={ 75 }
+                            color='white'
+                        />
+                    </div>
 
                     <div className='flex flex-col items-center gap-8 w-full px-64'>
                         <Button
