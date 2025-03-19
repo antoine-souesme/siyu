@@ -1,12 +1,13 @@
 import { FieldSharedProps, FieldWrapper } from '@src/components/Form/FieldWrapper';
 import clsx from 'clsx';
+import { HTMLInputTypeAttribute } from 'react';
 
 type StringFieldProps = {
     autoCapitalize?: string;
     autoFocus?: boolean;
     autoComplete?: string;
     centered?: boolean;
-    hidden?: boolean;
+    type?: HTMLInputTypeAttribute;
     className?: string;
 } & FieldSharedProps;
 
@@ -16,7 +17,7 @@ export const StringField = ({
     autoFocus = false,
     autoComplete = 'off',
     centered = false,
-    hidden = false,
+    type = 'text',
 
     // Shared
     registration,
@@ -72,7 +73,7 @@ export const StringField = ({
                 ]) }
             >
                 <input
-                    type={ hidden ? 'password' : 'text' }
+                    type={ type }
                     placeholder={ placeholder }
                     readOnly={ readonly }
                     disabled={ disabled }

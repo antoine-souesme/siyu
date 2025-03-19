@@ -109,6 +109,7 @@ export const LoginPage = () => {
                             registration={ register('email') }
                             control={ control }
                             placeholder={ t('login-page.form.email') }
+                            type='email'
                             centered
                         />
 
@@ -116,7 +117,7 @@ export const LoginPage = () => {
                             registration={ register('password') }
                             control={ control }
                             placeholder={ t('login-page.form.password') }
-                            hidden
+                            type='password'
                             centered
                         />
 
