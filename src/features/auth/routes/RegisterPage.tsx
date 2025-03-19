@@ -153,6 +153,10 @@ export const RegisterPage = () => {
                             centered
                         />
 
+                        {JSON.stringify(mutation.error)}
+
+
+
                         <LocalFormError errors={ errors } />
 
                         <Button

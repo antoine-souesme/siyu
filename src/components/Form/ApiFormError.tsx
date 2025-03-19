@@ -1,19 +1,13 @@
 import clsx from 'clsx';
-import { isEmpty, isNil } from 'lodash';
-import { useMemo } from 'react';
-import AnimateHeight from 'react-animate-height';
-import { FieldErrors } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-type LocalFormErrorProps = {
-    errors: FieldErrors<any>;
+type ApiFormErrorProps = {
     className?: string;
 }
 
-export const LocalFormError = ({
-    errors,
+export const ApiFormError = ({
     className,
-}: LocalFormErrorProps) => {
+}: ApiFormErrorProps) => {
 
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Contexts                                                                                       <
@@ -38,33 +32,18 @@ export const LocalFormError = ({
     //> Getters                                                                                        <
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
 
-    const content = useMemo(() => {
-        if (isNil(errors) || isEmpty(errors)) return null;
-
-        return (
-            <div
-                className={ clsx([
-                    'text-center',
-                    className,
-                ]) }
-            >
-                <p className='text-error'>{t('local-form-error.invalid-fields')}</p>
-            </div>
-        );
-    }, [errors]);
-
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Callbacks                                                                                      <
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
 
     return (
-        <AnimateHeight
-            easing='ease-out'
-            duration={ 250 }
-            height={ content ? 'auto' : 0 }
+        <div
+            className={ clsx([
+                '',
+                className,
+            ]) }
         >
-            {content}
-        </AnimateHeight>
-
+            ApiFormError
+        </div>
     );
 };
