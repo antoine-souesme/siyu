@@ -1,0 +1,12 @@
+{
+    "auth-page.login": "Se connecter",
+    "auth-page.register": "Créer un compte",
+    "button.back": "Retour",
+    "button.validate": "Valider",
+    "field-wrapper.default-error": "Le champ est invalide",
+    "register-page.form.confirmPassword": "Confirmer le mot de passe",
+    "register-page.form.displayName": "Nom d'affichage",
+    "register-page.form.email": "Adresse email",
+    "register-page.form.password": "Mot de passe",
+    "register-page.title": "Créer un compte"
+}

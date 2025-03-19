@@ -1,4 +1,5 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonPage } from '@ionic/react';
+import { AuthHeader } from '@src/components/Elements/AuthHeader';
 
 // type FormInput = {
 //     email: string;
@@ -38,15 +39,8 @@ export const LoginPage = () => {
 
     return (
         <IonPage>
-            <IonHeader>
-                <IonToolbar>
-                    <IonTitle>Login</IonTitle>
-                </IonToolbar>
-            </IonHeader>
             <IonContent>
-                Login page
-
-
+                <AuthHeader />
             </IonContent>
         </IonPage>
     );

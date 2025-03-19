@@ -101,7 +101,7 @@ export const RegisterPage = () => {
                             onClick={ () => history.replace('/') }
                             className='font-light text-xl'
                         >
-                            Créer un compte
+                            {t('register-page.title')}
                         </p>
                     </div>
 
