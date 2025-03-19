@@ -3,7 +3,7 @@
     "auth-page.register": "Créer un compte",
     "button.back": "Retour",
     "button.validate": "Valider",
-    "field-wrapper.default-error": "Le champ est invalide",
+    "local-form-error.invalid-fields": "Certains champs sont invalides",
     "login-page.form.email": "Adresse email",
     "login-page.form.password": "Mot de passe",
     "login-page.title": "Se connecter",

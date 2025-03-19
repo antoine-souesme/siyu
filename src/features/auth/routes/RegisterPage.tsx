@@ -3,6 +3,7 @@ import { IonContent, IonPage } from '@ionic/react';
 import { AuthHeader } from '@src/components/Elements/AuthHeader';
 import { Button } from '@src/components/Elements/Button';
 import { Icon } from '@src/components/Elements/Icon';
+import { LocalFormError } from '@src/components/Form/LocalFormError';
 import { StringField } from '@src/components/Form/StringField';
 import { LocalStorageKeys } from '@src/constants/local-storage-keys';
 import { useMutationRegister } from '@src/features/auth/api/useMutationRegister';
@@ -151,6 +152,8 @@ export const RegisterPage = () => {
                             placeholder={ t('register-page.form.confirmPassword') }
                             centered
                         />
+
+                        <LocalFormError errors={ errors } />
 
                         <Button
                             type='submit'
