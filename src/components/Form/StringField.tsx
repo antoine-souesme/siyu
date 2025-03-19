@@ -6,6 +6,7 @@ type StringFieldProps = {
     autoFocus?: boolean;
     autoComplete?: string;
     centered?: boolean;
+    hidden?: boolean;
     className?: string;
 } & FieldSharedProps;
 
@@ -15,6 +16,7 @@ export const StringField = ({
     autoFocus = false,
     autoComplete = 'off',
     centered = false,
+    hidden = false,
 
     // Shared
     registration,
@@ -70,7 +72,7 @@ export const StringField = ({
                 ]) }
             >
                 <input
-                    type='text'
+                    type={ hidden ? 'password' : 'text' }
                     placeholder={ placeholder }
                     readOnly={ readonly }
                     disabled={ disabled }

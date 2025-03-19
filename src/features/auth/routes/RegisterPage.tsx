@@ -143,6 +143,7 @@ export const RegisterPage = () => {
                             control={ control }
                             error={ errors.password }
                             placeholder={ t('register-page.form.password') }
+                            hidden
                             centered
                         />
 
@@ -151,6 +152,7 @@ export const RegisterPage = () => {
                             control={ control }
                             error={ errors.confirmPassword }
                             placeholder={ t('register-page.form.confirmPassword') }
+                            hidden
                             centered
                         />
 

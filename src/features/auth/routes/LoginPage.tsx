@@ -116,6 +116,7 @@ export const LoginPage = () => {
                             registration={ register('password') }
                             control={ control }
                             placeholder={ t('login-page.form.password') }
+                            hidden
                             centered
                         />
 
