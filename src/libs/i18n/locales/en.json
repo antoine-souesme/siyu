@@ -1,4 +1,9 @@
 {
+    "api.login.password.invalid": "The password is incorrect",
+    "api.login.user.not-found": "No user found with this email address",
+    "api.register.email.format": "The email address format is incorrect",
+    "api.register.email.taken": "This email address is already in use",
+    "api.register.password.mismatch": "Password confirmation does not match",
     "auth-page.login": "Login",
     "auth-page.register": "Create an account",
     "button.back": "Back",
@@ -11,5 +16,6 @@
     "register-page.form.displayName": "Display name",
     "register-page.form.email": "Email address",
     "register-page.form.password": "Password",
-    "register-page.title": "Create an account"
+    "register-page.title": "Create an account",
+    "zod.required": "This field is required"
 }

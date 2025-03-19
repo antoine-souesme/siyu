@@ -3,6 +3,7 @@ import { IonContent, IonPage } from '@ionic/react';
 import { AuthHeader } from '@src/components/Elements/AuthHeader';
 import { Button } from '@src/components/Elements/Button';
 import { Icon } from '@src/components/Elements/Icon';
+import { ApiFormError } from '@src/components/Form/ApiFormError';
 import { LocalFormError } from '@src/components/Form/LocalFormError';
 import { StringField } from '@src/components/Form/StringField';
 import { LocalStorageKeys } from '@src/constants/local-storage-keys';
@@ -153,10 +154,7 @@ export const RegisterPage = () => {
                             centered
                         />
 
-                        {JSON.stringify(mutation.error)}
-
-
-
+                        <ApiFormError error={ mutation.error } />
                         <LocalFormError errors={ errors } />
 
                         <Button

@@ -66,7 +66,7 @@ export const StringField = ({
                     'outline-hidden ease-in-out duration-150',
                     !disabled && !readonly && 'hover:border-accent focus-within:border-accent',
                     (disabled || readonly) && 'bg-soft-grey border-soft-grey text-grey placeholder:text-grey! cursor-not-allowed',
-                    error && 'border-red-600!',
+                    error && 'border-error!',
                 ]) }
             >
                 <input
@@ -82,7 +82,7 @@ export const StringField = ({
                         'outline-hidden font-light placeholder:text-soft-grey',
                         (disabled || readonly) && 'bg-soft-grey border-soft-grey text-grey placeholder:text-grey! cursor-not-allowed',
                         centered && 'text-center',
-                        error && 'border-red-600!',
+                        error && 'border-error!',
                     ]) }
                     { ...registration }
                 />

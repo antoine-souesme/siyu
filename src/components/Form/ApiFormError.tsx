@@ -1,11 +1,17 @@
+import { components } from '@src/libs/api/schemas';
 import clsx from 'clsx';
+import { isNil } from 'lodash';
+import { useMemo } from 'react';
+import AnimateHeight from 'react-animate-height';
 import { useTranslation } from 'react-i18next';
 
 type ApiFormErrorProps = {
+    error: components['schemas']['ApiError'] | null;
     className?: string;
 }
 
 export const ApiFormError = ({
+    error,
     className,
 }: ApiFormErrorProps) => {
 
@@ -32,18 +38,33 @@ export const ApiFormError = ({
     //> Getters                                                                                        <
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
 
+    const content = useMemo(() => {
+        if (isNil(error)) return null;
+
+        return (
+            <div
+                className={ clsx([
+                    'text-center',
+                    className,
+                ]) }
+            >
+                <p className='text-error'>{t(`api.${error.message}`)}</p>
+            </div>
+        );
+    }, [error]);
+
+
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Callbacks                                                                                      <
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
 
     return (
-        <div
-            className={ clsx([
-                '',
-                className,
-            ]) }
+        <AnimateHeight
+            easing='ease-out'
+            duration={ 250 }
+            height={ content ? 'auto' : 0 }
         >
-            ApiFormError
-        </div>
+            {content}
+        </AnimateHeight>
     );
 };
