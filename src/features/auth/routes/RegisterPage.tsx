@@ -84,7 +84,8 @@ export const RegisterPage = () => {
 
             if (response?.data) {
                 localStorage.setItem(LocalStorageKeys.AccessToken, response.data.accessToken);
-                window.location.reload();
+                // window.location.reload();
+                history.replace('/discover');
             }
         } catch (error) {
             handleErrorMessage(error);
