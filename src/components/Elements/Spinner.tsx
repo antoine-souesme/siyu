@@ -8,7 +8,6 @@ type SpinnerProps = {
 }
 
 export const Spinner = ({
-    size = 20,
     color = 'accent',
     className,
 }: SpinnerProps) => {
