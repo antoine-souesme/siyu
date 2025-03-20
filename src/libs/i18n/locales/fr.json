@@ -1,12 +1,21 @@
 {
+    "api.login.password.invalid": "Le mot de passe est incorrect",
+    "api.login.user.not-found": "Aucun utilisateur trouvé avec cet adresse email",
+    "api.register.email.format": "Le format de l'adresse email n'est pas correct",
+    "api.register.email.taken": "Cette adresse email est déjà utilisée",
+    "api.register.password.mismatch": "La confirmation du mot de passe ne correspond pas",
     "auth-page.login": "Se connecter",
     "auth-page.register": "Créer un compte",
     "button.back": "Retour",
     "button.validate": "Valider",
-    "field-wrapper.default-error": "Le champ est invalide",
+    "local-form-error.invalid-fields": "Certains champs sont invalides",
+    "login-page.form.email": "Adresse email",
+    "login-page.form.password": "Mot de passe",
+    "login-page.title": "Se connecter",
     "register-page.form.confirmPassword": "Confirmer le mot de passe",
     "register-page.form.displayName": "Nom d'affichage",
     "register-page.form.email": "Adresse email",
     "register-page.form.password": "Mot de passe",
-    "register-page.title": "Créer un compte"
+    "register-page.title": "Créer un compte",
+    "zod.required": "Ce champ est requis"
 }

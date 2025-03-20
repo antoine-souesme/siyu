@@ -1,7 +1,10 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { IonContent, IonPage } from '@ionic/react';
 import { AuthHeader } from '@src/components/Elements/AuthHeader';
 import { Button } from '@src/components/Elements/Button';
 import { Icon } from '@src/components/Elements/Icon';
+import { ApiFormError } from '@src/components/Form/ApiFormError';
+import { LocalFormError } from '@src/components/Form/LocalFormError';
 import { StringField } from '@src/components/Form/StringField';
 import { LocalStorageKeys } from '@src/constants/local-storage-keys';
 import { useMutationRegister } from '@src/features/auth/api/useMutationRegister';
@@ -11,6 +14,7 @@ import clsx from 'clsx';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
+import { z } from 'zod';
 
 type FormInput = {
     email: string;
@@ -18,6 +22,13 @@ type FormInput = {
     confirmPassword: string;
     displayName: string;
 }
+
+const schema = z.object({
+    email: z.string().min(1, 'zod.required'),
+    password: z.string().min(1, 'zod.required'),
+    confirmPassword: z.string().min(1, 'zod.required'),
+    displayName: z.string().min(1, 'zod.required'),
+});
 
 export const RegisterPage = () => {
 
@@ -40,7 +51,9 @@ export const RegisterPage = () => {
     const history = useHistory();
 
     // Form
-    const { register, control, handleSubmit } = useForm<FormInput>();
+    const { register, control, handleSubmit, formState: {errors} } = useForm<FormInput>({
+        resolver: zodResolver(schema),
+    });
 
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Queries                                                                                        <
@@ -112,13 +125,16 @@ export const RegisterPage = () => {
                         <StringField
                             registration={ register('email') }
                             control={ control }
+                            error={ errors.email }
                             placeholder={ t('register-page.form.email') }
+                            type='email'
                             centered
                         />
 
                         <StringField
                             registration={ register('displayName') }
                             control={ control }
+                            error={ errors.displayName }
                             placeholder={ t('register-page.form.displayName') }
                             centered
                         />
@@ -126,16 +142,23 @@ export const RegisterPage = () => {
                         <StringField
                             registration={ register('password') }
                             control={ control }
+                            error={ errors.password }
                             placeholder={ t('register-page.form.password') }
+                            type='password'
                             centered
                         />
 
                         <StringField
                             registration={ register('confirmPassword') }
                             control={ control }
+                            error={ errors.confirmPassword }
                             placeholder={ t('register-page.form.confirmPassword') }
+                            type='password'
                             centered
                         />
+
+                        <ApiFormError error={ mutation.error } />
+                        <LocalFormError errors={ errors } />
 
                         <Button
                             type='submit'

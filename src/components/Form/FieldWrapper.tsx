@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import { Control, FieldError, UseFormRegisterReturn } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
 
 type FieldWrapperProps = {
     label?: string;
@@ -34,7 +33,7 @@ export type FieldSharedProps = {
 }
 
 export const FieldWrapper = ({
-    error,
+    // error,
     label,
     helpText,
     children,
@@ -46,7 +45,7 @@ export const FieldWrapper = ({
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
 
     // I18n
-    const { t } = useTranslation();
+    // const { t } = useTranslation();
 
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Contexts                                                                                       <
@@ -97,8 +96,8 @@ export const FieldWrapper = ({
                 {children}
             </div>
 
-            {(error as FieldError) &&
-                <div className={ clsx('mt-8 text-red-600 font-medium') }>
+            {/* {(error as FieldError) &&
+                <div className={ clsx('mt-8 text-error font-medium') }>
                     {((error as any)?.message === null) &&
                         <p>{t('field-wrapper.default-error')}</p>
                     }
@@ -109,7 +108,7 @@ export const FieldWrapper = ({
                         </p>
                     }
                 </div>
-            }
+            } */}
         </div>
     );
 };

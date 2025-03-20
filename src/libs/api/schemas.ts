@@ -65,6 +65,13 @@ export type components = {
         RegisterResponse: {
             accessToken: string;
         };
+        /** @enum {string} */
+        ApiErrorCodes: ApiErrorCodes;
+        ApiError: {
+            error: string;
+            message: components["schemas"]["ApiErrorCodes"];
+            statusCode: number;
+        };
         LoginDto: {
             email: string;
             password: string;
@@ -119,6 +126,14 @@ export interface operations {
                     "application/json": components["schemas"]["RegisterResponse"];
                 };
             };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApiError"];
+                };
+            };
         };
     };
     AuthController_login: {
@@ -142,6 +157,21 @@ export interface operations {
                     "application/json": components["schemas"]["LoginResponse"];
                 };
             };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApiError"];
+                };
+            };
         };
     };
+}
+export enum ApiErrorCodes {
+    register_email_format = "register.email.format",
+    register_email_taken = "register.email.taken",
+    register_password_mismatch = "register.password.mismatch",
+    login_user_not_found = "login.user.not-found",
+    login_password_invalid = "login.password.invalid"
 }

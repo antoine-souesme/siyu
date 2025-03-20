@@ -1,6 +1,6 @@
 
 import { client } from '@src/libs/api/api';
-import { paths } from '@src/libs/api/schemas';
+import { components, paths } from '@src/libs/api/schemas';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { FetchResponse, RequestBodyOption } from 'openapi-fetch';
 
@@ -17,7 +17,7 @@ const Register = ({ body }: RegisterOptions) => {
 };
 
 type UseRegisterOptions = {
-    config?: UseMutationOptions<FetchResponse<paths[typeof endpoint]['post'], paths[typeof endpoint]['post'], 'application/json'>, Error, RequestBodyOption<paths[typeof endpoint]['post']>, any>;
+    config?: UseMutationOptions<FetchResponse<paths[typeof endpoint]['post'], paths[typeof endpoint]['post'], 'application/json'>, components['schemas']['ApiError'], RequestBodyOption<paths[typeof endpoint]['post']>, any>;
 }
 
 export const useMutationRegister = ({ config = {} }: UseRegisterOptions) => {

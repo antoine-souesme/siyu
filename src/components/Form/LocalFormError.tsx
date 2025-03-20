@@ -1,38 +1,19 @@
-import { FieldSharedProps, FieldWrapper } from '@src/components/Form/FieldWrapper';
 import clsx from 'clsx';
-import { HTMLInputTypeAttribute } from 'react';
+import { isEmpty, isNil } from 'lodash';
+import { useMemo } from 'react';
+import AnimateHeight from 'react-animate-height';
+import { FieldErrors } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
-type StringFieldProps = {
-    autoCapitalize?: string;
-    autoFocus?: boolean;
-    autoComplete?: string;
-    centered?: boolean;
-    type?: HTMLInputTypeAttribute;
+type LocalFormErrorProps = {
+    errors: FieldErrors<any>;
     className?: string;
-} & FieldSharedProps;
+}
 
-export const StringField = ({
-    // Specific
-    autoCapitalize = 'off',
-    autoFocus = false,
-    autoComplete = 'off',
-    centered = false,
-    type = 'text',
-
-    // Shared
-    registration,
-    error,
-    label,
-    placeholder,
-    helpText,
-    readonly = false,
-    disabled = false,
+export const LocalFormError = ({
+    errors,
     className,
-}: StringFieldProps) => {
-
-    //>────────────────────────────────────────────────────────────────────────────────────────────────<
-    //> Libs                                                                                           <
-    //>────────────────────────────────────────────────────────────────────────────────────────────────<
+}: LocalFormErrorProps) => {
 
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Contexts                                                                                       <
@@ -43,6 +24,13 @@ export const StringField = ({
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
 
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
+    //> Libs                                                                                           <
+    //>────────────────────────────────────────────────────────────────────────────────────────────────<
+
+    // I18n
+    const { t } = useTranslation();
+
+    //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Queries                                                                                        <
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
 
@@ -50,46 +38,33 @@ export const StringField = ({
     //> Getters                                                                                        <
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
 
+    const content = useMemo(() => {
+        if (isNil(errors) || isEmpty(errors)) return null;
+
+        return (
+            <div
+                className={ clsx([
+                    'text-center',
+                    className,
+                ]) }
+            >
+                <p className='text-error'>{t('local-form-error.invalid-fields')}</p>
+            </div>
+        );
+    }, [errors]);
+
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
     //> Callbacks                                                                                      <
     //>────────────────────────────────────────────────────────────────────────────────────────────────<
 
     return (
-        <FieldWrapper
-            label={ label }
-            helpText={ helpText }
-            error={ error }
-            className={ className }
+        <AnimateHeight
+            easing='ease-out'
+            duration={ 250 }
+            height={ content ? 'auto' : 0 }
         >
-            <div
-                className={ clsx([
-                    'flex',
-                    'w-full h-50 rounded-medium',
-                    'bg-softer-grey border border-softer-grey [&:hover:not(:disabled,:read-only)]:border-accent [&:focus:not(:disabled,:read-only)]:border-accent',
-                    'outline-hidden ease-in-out duration-150',
-                    !disabled && !readonly && 'hover:border-accent focus-within:border-accent',
-                    (disabled || readonly) && 'bg-soft-grey border-soft-grey text-grey placeholder:text-grey! cursor-not-allowed',
-                    error && 'border-error!',
-                ]) }
-            >
-                <input
-                    type={ type }
-                    placeholder={ placeholder }
-                    readOnly={ readonly }
-                    disabled={ disabled }
-                    autoCapitalize={ autoCapitalize }
-                    autoFocus={ autoFocus }
-                    autoComplete={ autoComplete }
-                    className={ clsx([
-                        'w-full px-16 py-4 rounded-medium',
-                        'outline-hidden font-light placeholder:text-soft-grey',
-                        (disabled || readonly) && 'bg-soft-grey border-soft-grey text-grey placeholder:text-grey! cursor-not-allowed',
-                        centered && 'text-center',
-                        error && 'border-error!',
-                    ]) }
-                    { ...registration }
-                />
-            </div>
-        </FieldWrapper>
+            {content}
+        </AnimateHeight>
+
     );
 };
