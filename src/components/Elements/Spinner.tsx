@@ -41,7 +41,7 @@ export const Spinner = ({
         <svg
             className={ clsx([
                 "mr-3 -ml-1 animate-spin",
-                `text-${color} size-${size}`,
+                `text-${color} size-20`,
                 className,
             ]) }
             xmlns="http://www.w3.org/2000/svg"
