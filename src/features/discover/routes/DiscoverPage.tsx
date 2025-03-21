@@ -38,15 +38,18 @@ export const DiscoverPage = ({
 
     return (
         <IonPage>
-            <IonContent>
+            <IonContent
+                slot='fixed'
+                scrollY={ false }
+                style={ { overflow: 'hidden' } }
+            >
                 <div
                     style={ { paddingTop: 'var(--ion-safe-area-top)' } }
                     className={ clsx([
-                        '',
                         className,
                     ]) }
                 >
-                    DiscoverPage
+                    Page
                 </div>
             </IonContent>
         </IonPage>

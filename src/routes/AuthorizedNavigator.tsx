@@ -1,4 +1,5 @@
-import { IonLabel, IonPage, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
+import { IonPage, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
+import { Icon } from '@src/components/Elements/Icon';
 import { ChatPage } from '@src/features/chat/routes/ChatPage';
 import { DiscoverPage } from '@src/features/discover/routes/DiscoverPage';
 import { ProfilePage } from '@src/features/profile/routes/ProfilePage';
@@ -40,6 +41,7 @@ export const AuthorizedNavigator = () => {
                     <Route
                         exact
                         path='/discover'
+
                     >
                         <DiscoverPage />
                     </Route>
@@ -60,26 +62,48 @@ export const AuthorizedNavigator = () => {
                     slot="bottom"
                     style={ {
                         paddingBottom: 'var(--ion-safe-area-bottom)',
+                        backgroundColor: 'white',
                     } }
                 >
                     <IonTabButton
-                        tab="tab1"
+                        tab="discover"
                         href="/discover"
+                        style={ {
+                            backgroundColor: 'white',
+                        } }
                     >
-                        <IonLabel>Tab 1</IonLabel>
+                        <Icon
+                            i='Heart'
+                            width={ 24 }
+                            height={ 24 }
+                        />
                     </IonTabButton>
                     <IonTabButton
-                        tab="tab2"
+                        tab="chat"
                         href="/chat"
+                        style={ {
+                            backgroundColor: 'white',
+                        } }
                     >
-                        <IonLabel>Tab 2</IonLabel>
+                        <Icon
+                            i='Message'
+                            width={ 24 }
+                            height={ 24 }
+                        />
                     </IonTabButton>
                     <IonTabButton
-                        tab="tab3"
+                        tab="profile"
                         href="/profile"
+                        style={ {
+                            backgroundColor: 'white',
+                        } }
                     >
 
-                        <IonLabel>Tab 3</IonLabel>
+                        <Icon
+                            i='User'
+                            width={ 24 }
+                            height={ 24 }
+                        />
                     </IonTabButton>
                 </IonTabBar>
             </IonTabs>

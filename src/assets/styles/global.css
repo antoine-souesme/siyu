@@ -1,3 +1,13 @@
 :root {
     --ion-font-family: Fredoka, sans-serif;
+
+    ion-content {
+        --background: white;
+        --padding-start: var(--spacing-16);
+        --padding-end: var(--spacing-16);
+    }
+
+    ion-tab-button {
+        --color-selected: var(--color-accent);
+    }
 }
